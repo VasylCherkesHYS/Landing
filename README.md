@@ -29,3 +29,9 @@ $ npm run preview
 ## Customization
 * [Palette](https://beta.tailus.io/docs/customization/palette/) to learn how to customize the color palette.
 * [Plugin](https://beta.tailus.io/docs/customization/plugin/) to learn how to customize the theme.
+Контекст проекта:
+- Django лендинг дистрибьюторской компании
+- Стек: Django 4.2, PostgreSQL, Ada HTML (Tailus Themer + Tailwind)
+- Структура: distributor/ (Django) + ada-frontend/ (Vite+npm)
+
+- Текущий таск: 

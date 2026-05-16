@@ -1,0 +1,38 @@
+<div id="contactModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div class="card variant-outlined p-8 w-full max-w-md mx-4">
+        <div class="flex justify-between items-center mb-6">
+            <h2 id="contactModalTitle" class="text-title font-semibold text-xl">Связаться с нами</h2>
+            <button type="button" onclick="closeContactModal()" aria-label="закрыть" class="btn variant-ghost sz-sm icon-only">
+                <svg class="text-title size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <form action="{% url 'contacts:contact' %}" method="POST" class="space-y-4">
+            {% csrf_token %}
+            <input type="hidden" name="subject" id="modal-subject" value="general">
+
+            <div class="space-y-2.5 text-gray-950 dark:text-white">
+                <label class="block font-medium text-sm" for="modal-name">Имя</label>
+                <input class="input variant-outlined sz-md" type="text" id="modal-name" name="name" placeholder="Ваше имя" required>
+            </div>
+            <div class="space-y-2.5 text-gray-950 dark:text-white">
+                <label class="block font-medium text-sm" for="modal-email">Email</label>
+                <input class="input variant-outlined sz-md" type="email" id="modal-email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="space-y-2.5 text-gray-950 dark:text-white">
+                <label class="block font-medium text-sm" for="modal-phone">Телефон</label>
+                <input class="input variant-outlined sz-md" type="tel" id="modal-phone" name="phone" placeholder="+7 (___) ___-__-__">
+            </div>
+            <div class="space-y-2.5 text-gray-950 dark:text-white">
+                <label class="block font-medium text-sm" for="modal-message">Сообщение</label>
+                <textarea class="input variant-outlined sz-md" id="modal-message" name="message" rows="4" placeholder="Расскажите, чем мы можем помочь" required></textarea>
+            </div>
+
+            <button type="submit" class="btn variant-primary w-full mt-4">
+                <span class="btn-label">Отправить</span>
+            </button>
+        </form>
+    </div>
+</div>

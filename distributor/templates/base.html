@@ -1,0 +1,38 @@
+{% load static vite_tags %}
+<!DOCTYPE html>
+<html data-shade="950" data-rounded="3xlarge" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Дистрибьютор{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'ada/favicon.svg' %}" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="{% static 'ada/darkfavicon.svg' %}" media="(prefers-color-scheme: dark)">
+
+    {% vite_css %}
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-white dark:bg-gray-950">
+    {% include 'partials/_navbar.html' %}
+
+    {% if messages %}
+    <div class="fixed top-20 right-4 z-50 space-y-2">
+        {% for message in messages %}
+        <div class="card variant-outlined p-4 text-sm {{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <main class="overflow-hidden">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'partials/_footer.html' %}
+    {% include 'partials/_contact_modal.html' %}
+
+    {% vite_js %}
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
